@@ -12,22 +12,29 @@ import Divider from '../components/Divider';
 import { Button } from '../components/Buttons';
 import colors from '../constants/theme/colors';
 import AccountDetails from '../components/AccountDetails';
+import routes from '../constants/routes';
 
-export default function AccountScreen() {
+export default function AccountScreen({ navigation }) {
+  let handleOnClick = () => navigation.navigate(routes.EDIT_PROFILE);
   return (
-    <ScreenView>
+    <ScreenView style={{ backgroundColor: '#fff' }}>
       <View style={{ paddingHorizontal: scale(10), marginBottom: scale(10) }}>
         <AccountHeader />
         <AccountDetails />
-        <Button secondary>Edit Profile</Button>
+        <Button secondary onPress={handleOnClick}>
+          Edit Profile
+        </Button>
       </View>
       <Divider />
-      <ScrollView>
+      <ScrollView
+        style={{ flex: 1, flexGrow: 1 }}
+        contentContainerStyle={{ flexGrow: 1 }}
+      >
         <View
           style={{
             flexWrap: 'wrap',
-            flex: 1,
             flexDirection: 'row',
+            flex: 1,
           }}
         >
           {new Array(22).fill(0).map((i, k) => (

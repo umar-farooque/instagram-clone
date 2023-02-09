@@ -2,21 +2,35 @@ import React from 'react';
 import { View, StyleSheet, Image } from 'react-native';
 import Constants from 'expo-constants';
 import { scale, verticalScale } from 'react-native-size-matters';
-import { Ionicons } from '@expo/vector-icons';
-export default function Header() {
-  let uri = require('../../../assets/instagram_logo.png');
+import { Ionicons, MaterialIcons } from '@expo/vector-icons';
 
+let uri = require('../../../assets/instagram_logo.png');
+export default function Header({ onAddClick }) {
+  let height = {
+    height:
+      Constants.statusBarHeight < 35
+        ? verticalScale(Constants.statusBarHeight + 40)
+        : verticalScale(Constants.statusBarHeight + 20),
+  };
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, height]}>
       <Image source={uri} style={styles.logo} />
-      <Ionicons name='paper-plane-outline' size={scale(20)} color='black' />
+      <View style={{ flexDirection: 'row' }}>
+        <MaterialIcons
+          name='add-circle-outline'
+          size={scale(22)}
+          style={{ marginRight: 10 }}
+          color='black'
+          onPress={onAddClick}
+        />
+        <Ionicons name='paper-plane-outline' size={scale(22)} color='black' />
+      </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    height: verticalScale(Constants.statusBarHeight + 20),
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',

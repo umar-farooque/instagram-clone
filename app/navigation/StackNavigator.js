@@ -16,7 +16,14 @@ export function HomeNavigator() {
   return (
     <Stack.Navigator screenOptions={screenOptions}>
       <Stack.Screen name={routes.HOME} component={HomeScreen} />
-      <Stack.Screen name={routes.ADD_POST} component={AddPostScreen} />
+      <Stack.Screen
+        name={routes.ADD_POST}
+        options={{
+          headerShown: true,
+          title: 'Add Post',
+        }}
+        component={AddPostScreen}
+      />
     </Stack.Navigator>
   );
 }
@@ -25,7 +32,14 @@ export function AccountNavigator() {
   return (
     <Stack.Navigator screenOptions={screenOptions}>
       <Stack.Screen name={routes.ACCOUNT} component={AccountScreen} />
-      <Stack.Screen name={routes.EDIT_PROFILE} component={EditProfileScreen} />
+      <Stack.Screen
+        name={routes.EDIT_PROFILE}
+        options={{
+          headerShown: true,
+          title: 'Edit Profile',
+        }}
+        component={EditProfileScreen}
+      />
     </Stack.Navigator>
   );
 }
