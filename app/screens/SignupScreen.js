@@ -7,10 +7,14 @@ import { BodyText } from '../components/Typography';
 import { verticalScale, scale } from 'react-native-size-matters';
 import colors from '../constants/theme/colors';
 import routes from '../constants/routes';
+import { useMutation } from '@tanstack/react-query';
+import { signup } from '../api/Auth';
 
 export default function SignupScreen({ navigation }) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+
+  const { mutateAsync, isError, error } = useMutation(signup);
   let isDisabled = Boolean(!username || !password);
   let onChange = (str) => {
     setUsername(str);
@@ -18,8 +22,13 @@ export default function SignupScreen({ navigation }) {
   let onPasswordChange = (str) => {
     setPassword(str);
   };
-  let onButtonPress = () => {
-    isDisabled ? alert('Button Disabled') : alert('Button Pressed');
+  let onButtonPress = async () => {
+    try {
+      const result = await mutateAsync({ username, password });
+      console.log(result);
+    } catch (error) {
+      console.log(error.message);
+    }
   };
   let Navigate = () => {
     setUsername('');
@@ -27,6 +36,7 @@ export default function SignupScreen({ navigation }) {
     navigation.navigate(routes.LOGIN);
   };
   let uri = require('../../assets/instagram_logo.png');
+
   return (
     <ScreenView style={styles.container}>
       <Image source={uri} style={styles.logo} />

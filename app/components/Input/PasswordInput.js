@@ -28,10 +28,7 @@ export default function PasswordInput({
           {...otherProps}
         />
 
-        <TouchableWithoutFeedback
-          onPress={() => setVisible(!visible)}
-          style={{ backgroundColor: 'red' }}
-        >
+        <TouchableWithoutFeedback onPress={() => setVisible(!visible)}>
           <Ionicons
             name={visible ? 'eye-outline' : 'eye-off-outline'}
             size={scale(20)}
@@ -53,6 +50,7 @@ const styles = StyleSheet.create({
   container: {
     height: verticalScale(40),
     borderWidth: scale(0.5),
+    borderColor: colors.text.grey,
     backgroundColor: '#FAFAFA',
     padding: scale(10),
     borderRadius: scale(5),

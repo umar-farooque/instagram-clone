@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
     borderWidth: scale(0.5),
     borderColor: colors.text.grey,
     backgroundColor: '#FAFAFA',
-    // padding: scale(10),
+    paddingLeft: scale(10),
     borderRadius: scale(5),
     fontFamily: 'SFRegular',
     fontSize: moderateScale(15),
